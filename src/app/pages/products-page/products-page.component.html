@@ -1,0 +1,58 @@
+<div class="body">
+  <div class="d-flex justify-content-center">
+    <h2>{{ "Almacen Patitos de Hule" | uppercase }}</h2>
+  </div>
+  <div class="d-flex">
+    <button
+      *ngIf="!modalOpen"
+      mat-flat-button
+      color="primary"
+      (click)="modalOpen = true; currentProduct=null;"
+    >
+      Create
+    </button>
+    <app-modal-products
+      *ngIf="modalOpen"
+      (outputData)="modalOpen = $event; getProducts();"
+      [data]="currentProduct"
+    ></app-modal-products>
+  </div>
+  <hr />
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Color</th>
+        <th scope="col">Tamaño</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of listProduct">
+        <th scope="row">{{ product.id }}</th>
+        <td>{{ product.color }}</td>
+        <td>{{ product.size }}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.amount }}</td>
+        <td>
+          <button
+            class="me-2"
+            mat-flat-button
+            color="primary"
+            (click)="actionsTable(product, 'update')"
+          >
+            Update</button
+          ><button
+            mat-flat-button
+            color="warn"
+            (click)="actionsTable(product, 'update')"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

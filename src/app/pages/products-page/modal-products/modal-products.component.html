@@ -1,0 +1,81 @@
+<div class="body">
+  <form [formGroup]="form">
+    <mat-form-field class="me-2" appearance="outline">
+      <mat-label>Color</mat-label>
+      <mat-select formControlName="color">
+        <mat-option *ngFor="let item of listColors" [value]="item.value">{{
+          item.value
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          form.controls['color'].invalid &&
+          (form.controls['color'].touched || form.controls['color'].dirty)
+        "
+      >
+        <mat-error *ngIf="form.controls['color'].errors['required']!">
+          The field is required
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="me-2" appearance="outline">
+      <mat-label>Tamaño</mat-label>
+      <mat-select formControlName="size">
+        <mat-option *ngFor="let item of listSize" [value]="item.value">{{
+          item.description
+        }}</mat-option>
+      </mat-select>
+      <mat-error
+        *ngIf="
+          form.controls['size'].invalid &&
+          (form.controls['size'].touched || form.controls['size'].dirty)
+        "
+      >
+        <mat-error *ngIf="form.controls['size'].errors['required']!">
+          The field is required
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="me-2" appearance="outline">
+      <mat-label>Precio</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Precio"
+        formControlName="price"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['price'].invalid &&
+          (form.controls['price'].touched || form.controls['price'].dirty)
+        "
+      >
+        <mat-error *ngIf="form.controls['price'].errors['required']!">
+          The field is required
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field class="me-2" appearance="outline">
+      <mat-label>Cantidad</mat-label>
+      <input
+        type="number"
+        matInput
+        placeholder="Cantidad"
+        formControlName="amount"
+      />
+      <mat-error
+        *ngIf="
+          form.controls['amount'].invalid &&
+          (form.controls['amount'].touched || form.controls['amount'].dirty)
+        "
+      >
+        <mat-error *ngIf="form.controls['amount'].errors['required']!">
+          The field is required
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <button mat-flat-button color="primary" (click)="clickButton()">
+      Guardar
+    </button>
+  </form>
+</div>
