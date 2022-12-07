@@ -65,7 +65,7 @@ export class ModalProductsComponent implements OnInit {
           this.outputData.emit(false);
         });
       } else {
-        let update: IProductUpdateDto = this.form.value;
+        let update: IProductUpdateDto = this.form.value;      
         this._productService
           .updateProduct(this.data!.id, update)
           .subscribe((_) => {
@@ -79,5 +79,8 @@ export class ModalProductsComponent implements OnInit {
 
   clickButton() {
     this.validateForm();
+  }
+  cancelButton(){
+    this.outputData.emit(false);
   }
 }

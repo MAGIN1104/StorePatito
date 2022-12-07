@@ -74,8 +74,11 @@
         </mat-error>
       </mat-error>
     </mat-form-field>
-    <button mat-flat-button color="primary" (click)="clickButton()">
+    <button class="me-2" mat-flat-button color="primary" (click)="clickButton()">
       Guardar
+    </button>
+    <button mat-flat-button color="warn" (click)="cancelButton()">
+      Cancelar
     </button>
   </form>
 </div>
